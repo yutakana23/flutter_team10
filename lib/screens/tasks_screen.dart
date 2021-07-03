@@ -7,11 +7,10 @@ class Task {
   final String area;
   bool isDone;
 
-  Task(
-      {required this.name,
-      required this.subject,
-      required this.area,
-      this.isDone = false});
+  Task({required this.name,
+    required this.subject,
+    required this.area,
+    this.isDone = false});
 
   void _action() {
     isDone = !isDone;
@@ -87,25 +86,34 @@ class SuggestedTasksState extends State<SuggestedTasks> {
       appBar: AppBar(
         title: Text('Tasks'),
       ),
-      body: _DisplayTasks(_tasks),
+      body:_DisplayTasks(_tasks),
+    );
+  }
+
+  Widget _buildFrame(Entry root) {
+    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    return ExpansionTile(
+      key: PageStorageKey<Entry>(root),
+      title: Text(root.title),
+      children: root.children.map(_buildFrame).toList(),
     );
   }
 
   Widget _buildRow(Task task) {
     return Card(
         child: ListTile(
-      title: Text(task.name),
-      trailing: ElevatedButton(
-        child: Text('button'),
-        style: ElevatedButton.styleFrom(
-          primary: Colors.blue,
-          onPrimary: Colors.white,
-        ),
-        onPressed: () {
-          print('pressed');
-        },
-      ),
-    ));
+          title: Text(task.name),
+          trailing: ElevatedButton(
+            child: Text('button'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              onPrimary: Colors.white,
+            ),
+            onPressed: () {
+              print('pressed');
+            },
+          ),
+        ));
   }
 
   Widget _DisplayTasks(List<Task> tasks) {
