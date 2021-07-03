@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -165,7 +164,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         password: userData['password']!);
                     if (userCredential.user != null) {
                       userData['uid'] = userCredential.user!.uid;
-                      print(userData['uid']);
                       _firestore.collection('settings').add(userData);
                       Navigator.pushNamed(context, TabsScreen.id);
                     }
