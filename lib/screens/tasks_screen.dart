@@ -103,11 +103,11 @@ class SuggestedTasksState extends State<SuggestedTasks> {
   }
 
   Widget _buildFrame(Entry root) {
-    if (root.children.isEmpty) return Text('tmp');
-      // return ExpansionTile(
-      //   title: Text(root.title),
-      //   children: [_DisplayTasks(_tasks)],
-      // );
+    if (root.children.isEmpty)
+      return ExpansionTile(
+        title: Text(root.title),
+        children: [_DisplayTasks(_tasks)],
+      );
     return ExpansionTile(
       key: PageStorageKey<Entry>(root),
       title: Text(root.title),
