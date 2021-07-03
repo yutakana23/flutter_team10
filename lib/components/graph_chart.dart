@@ -15,7 +15,7 @@ class GraphChart extends StatelessWidget {
           minX: 0,
           maxX: 11,
           minY: 0,
-          maxY: 6,
+          maxY: 10,
           titlesData: LineTitles.getTitleData(),
           gridData: FlGridData(
             show: true,
@@ -71,11 +71,11 @@ class LineTitles {
           getTitles: (value) {
             switch (value.toInt()) {
               case 2:
-                return 'MAR';
+                return '6月';
               case 5:
-                return 'JUN';
+                return '8月';
               case 8:
-                return 'SEP';
+                return '10月';
             }
             return '';
           },
@@ -90,12 +90,18 @@ class LineTitles {
           ),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
-                return '10k';
-              case 3:
-                return '30k';
-              case 5:
-                return '50k';
+              case 0:
+                return '0';
+              case 2:
+                return '20';
+              case 4:
+                return '40';
+              case 6:
+                return '60';
+              case 8:
+                return '80';
+              case 10:
+                return '100';
             }
             return '';
           },
