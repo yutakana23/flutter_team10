@@ -46,7 +46,8 @@ class Task {
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
 
-  static const String id = 'Tasks_Screen';
+
+  static const String id = 'tasks_screen';
 
   @override
   Widget build(BuildContext context) {
