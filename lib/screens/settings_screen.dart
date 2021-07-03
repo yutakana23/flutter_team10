@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
-    getUserData();
+  //  getUserData();
     super.initState();
   }
 
