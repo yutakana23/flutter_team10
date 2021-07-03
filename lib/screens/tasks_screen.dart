@@ -46,8 +46,7 @@ class Task {
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
 
-
-  static const String id = 'tasks_screen';
+  static const String id = 'Tasks_Screen';
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,22 @@ class Entry {
 }
 
 const List<Entry> frame = <Entry>[
-  Entry('数学', <Entry>[Entry('数と式'), Entry('2次関数'), Entry('三角比')]),
+  Entry(
+      '数学',
+      <Entry>[
+        Entry('数と式'),
+        Entry('2次関数'),
+        Entry('三角比')
+      ]
+  ),
+  Entry(
+      '国語',
+      <Entry>[
+        Entry('現代文'),
+        Entry('古文'),
+        Entry('漢文')
+      ]
+  ),
 ];
 
 class SuggestedTasks extends StatefulWidget {
@@ -84,15 +98,16 @@ class SuggestedTasksState extends State<SuggestedTasks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tasks'),
-      ),
-      body:_DisplayTasks(_tasks),
+      body:_DisplayFrame(frame),
     );
   }
 
   Widget _buildFrame(Entry root) {
-    if (root.children.isEmpty) return ListTile(title: Text(root.title));
+    if (root.children.isEmpty) return Text('tmp');
+      // return ExpansionTile(
+      //   title: Text(root.title),
+      //   children: [_DisplayTasks(_tasks)],
+      // );
     return ExpansionTile(
       key: PageStorageKey<Entry>(root),
       title: Text(root.title),
@@ -100,25 +115,33 @@ class SuggestedTasksState extends State<SuggestedTasks> {
     );
   }
 
-  Widget _buildRow(Task task) {
-    return Card(
-        child: ListTile(
-          title: Text(task.name),
-          trailing: ElevatedButton(
-            child: Text('button'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
-              onPrimary: Colors.white,
-            ),
-            onPressed: () {
-              print('pressed');
-            },
-          ),
-        ));
+  Widget _DisplayFrame(List<Entry> frame) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) => _buildFrame(frame[index]),
+      itemCount: frame.length,
+    );
   }
+
+  // Widget _buildRow(Task task) {
+  //   return Card(
+  //       child: ListTile(
+  //         title: Text(task.name),
+  //         trailing: ElevatedButton(
+  //           child: Text('button'),
+  //           style: ElevatedButton.styleFrom(
+  //             primary: Colors.blue,
+  //             onPrimary: Colors.white,
+  //           ),
+  //           onPressed: () {
+  //             print('pressed');
+  //           },
+  //         ),
+  //       ));
+  // }
 
   Widget _DisplayTasks(List<Task> tasks) {
     return ListView.builder(
+        shrinkWrap: true,
         itemCount: tasks.length,
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (BuildContext context, int i) {
