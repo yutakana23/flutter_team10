@@ -1,5 +1,8 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'physics_question.dart';
+import 'package:mr_study/components/graph_chart.dart';
+
 
 class ExamsScreen extends StatelessWidget {
   static const String id = 'Exams_Screen';
@@ -26,13 +29,16 @@ class ExamsScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('右の選択肢から科目を選んでね',
+                  Text(
+                    '右の選択肢から科目を選んでね',
                     style: TextStyle(
                       fontSize: 21.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+
                   Text('　<物理>',
+
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
@@ -56,11 +62,23 @@ class ExamsScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text('グラフをここに',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  ),
-                ),
+                child: GraphChart([
+                  FlSpot(0, 3),
+                  FlSpot(2.6, 2),
+                  FlSpot(4.9, 5),
+                  FlSpot(6.8, 2.5),
+                  FlSpot(8, 4),
+                  FlSpot(9.5, 3),
+                  FlSpot(11, 4),
+                ], [
+                  FlSpot(0, 4),
+                  FlSpot(2.6, 4.3),
+                  FlSpot(4.9, 4.6),
+                  FlSpot(6.8, 5),
+                  FlSpot(8, 6),
+                  FlSpot(9.5, 5.3),
+                  FlSpot(11, 6),
+                ]),
               ),
             ),
           ),
@@ -85,7 +103,8 @@ class ExamsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white),
                       child: Center(
-                        child: Text('克服したい単元',
+                        child: Text(
+                          '克服したい単元',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
