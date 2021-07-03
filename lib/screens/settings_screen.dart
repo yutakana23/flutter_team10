@@ -34,12 +34,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       if (user != null) {
         loggedInUser = user;
       }
-      print(loggedInUser!.uid);
       final userSnapshot = await _firestore.collection('settings').where('uid', isEqualTo: loggedInUser!.uid).get();
       setState(() {
         userData = userSnapshot.docs[0].data();
       });
-      print(userData);
     } catch (e) {
       print(e);
     }
@@ -58,7 +56,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           SettingTile(title: '名前', trailing:  userData['name'] ?? ''),
           SettingTile(title: '地域', trailing: userData['region'] ?? ''),
-          SettingTile(title: '地域', trailing: userData['college'] ?? ''),
+          SettingTile(title: '志望大学', trailing: userData['college'] ?? ''),
           SettingTile(title: '公開', trailing: (userData['public'] ?? false).toString()),
         ],
       ),
