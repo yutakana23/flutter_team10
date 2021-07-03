@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mr_study/screens/tabs_screen.dart';
 import 'package:mr_study/screens/tasks_screen.dart';
 import 'package:mr_study/screens/exams_screen.dart';
 import 'package:mr_study/screens/settings_screen.dart';
+import 'package:mr_study/screens/welcome_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,11 +19,11 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: ExamsScreen.id,
+
+      initialRoute: TabsScreen.id,
       routes: {
-        TasksScreen.id: (context) => TasksScreen(),
-        ExamsScreen.id: (context) => ExamsScreen(),
-        SettingsScreen.id: (context) => SettingsScreen(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        TabsScreen.id: (context) => TabsScreen(),
       },
     );
   }
