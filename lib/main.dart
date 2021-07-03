@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: TasksScreen.id,
+      initialRoute: ExamsScreen.id,
       routes: {
         TasksScreen.id: (context) => TasksScreen(),
         ExamsScreen.id: (context) => ExamsScreen(),
