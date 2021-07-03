@@ -6,17 +6,27 @@ class ExamsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '模試の結果と比較',
-          style: TextStyle(
-            fontSize: 30.0,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     '模試の結果と比較',
+      //     style: TextStyle(
+      //       fontSize: 30.0,
+      //     ),
+      //   ),
+      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
           Expanded(
             flex: 5,
             child: Container(
@@ -71,16 +81,6 @@ class ExamsScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              margin: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
