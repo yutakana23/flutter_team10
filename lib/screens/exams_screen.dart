@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'physics_question.dart';
 import 'package:mr_study/components/graph_chart.dart';
+
 
 class ExamsScreen extends StatelessWidget {
   static const String id = 'Exams_Screen';
@@ -9,6 +11,9 @@ class ExamsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -17,7 +22,8 @@ class ExamsScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                color: Colors.orangeAccent,
+                color: Colors.lightBlueAccent,
+                border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -26,11 +32,13 @@ class ExamsScreen extends StatelessWidget {
                   Text(
                     '右の選択肢から科目を選んでね',
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    '　<数学>',
+
+                  Text('　<物理>',
+
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
@@ -44,7 +52,8 @@ class ExamsScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: Colors.blue,
+                border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Container(
@@ -78,7 +87,8 @@ class ExamsScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: Colors.blue,
+                border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
@@ -97,7 +107,8 @@ class ExamsScreen extends StatelessWidget {
                           '克服したい単元',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0,
                           ),
                         ),
                       ),
@@ -116,17 +127,49 @@ class ExamsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            _subject[0] + ':',
-                            style: TextStyle(
-                              fontSize: 25.0,
-                            ),
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(_subject[3]+':',
+                                  style: TextStyle(
+                                    fontSize: 25.0,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 20.0),
+                              ElevatedButton(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: <Color>[
+                                        Colors.orange,
+                                        Colors.orangeAccent,
+                                        Colors.deepOrange,
+                                      ],
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.all(10),
+                                  child: const Text('確認問題へ！'),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.all(0),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                                    return PhysicsQuestion();
+                                  }));
+                                },
+                              ),
+                            ],
                           ),
-                          Text(
-                            ' 計算分野の問題が苦手なようです。これからは、グラフの活用や、式の利用などを中心に克服しましょう。',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 15.0,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('「力の働く運動」分野の問題が苦手なようです。公式をしっかりと覚えて、活用できるようにしましょう。力学は図を書くことでわかりやすくなります。',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 15.0,
+                              ),
                             ),
                           ),
                         ],
