@@ -103,6 +103,7 @@ class SuggestedTasksState extends State<SuggestedTasks> {
   }
 
   Widget _buildFrame(Entry root) {
+    print(_DisplayTasks(_tasks).runtimeType);
     if (root.children.isEmpty)
       return ExpansionTile(
         title: Text(root.title),
