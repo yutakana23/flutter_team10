@@ -1,8 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mr_study/screens/registration_screen.dart';
+import 'package:mr_study/screens/login_screen.dart';
 import 'package:mr_study/screens/tabs_screen.dart';
-import 'package:mr_study/screens/tasks_screen.dart';
-import 'package:mr_study/screens/exams_screen.dart';
-import 'package:mr_study/screens/settings_screen.dart';
 import 'package:mr_study/screens/welcome_screen.dart';
 
 void main() {
@@ -14,15 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         //全体で行うことを設定としてはじめに定義
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: TabsScreen.id,
+      initialRoute: LoginScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
         TabsScreen.id: (context) => TabsScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
       },
     );
   }
