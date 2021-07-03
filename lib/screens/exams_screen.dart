@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 
 class ExamsScreen extends StatelessWidget {
   static const String id = 'Exams_Screen';
+  static const List<String> _subject = ['数学Ⅰ・A', '数学Ⅱ・B', '英語', '物理'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     '模試の結果と比較',
-      //     style: TextStyle(
-      //       fontSize: 30.0,
-      //     ),
-      //   ),
-      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -106,7 +99,7 @@ class ExamsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('数学Ⅰ・A:',
+                          Text(_subject[0]+':',
                             style: TextStyle(
                               fontSize: 25.0,
                             ),
