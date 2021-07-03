@@ -52,6 +52,7 @@ class ExamsScreen extends StatelessWidget {
               ),
               child: Container(
                 margin: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
