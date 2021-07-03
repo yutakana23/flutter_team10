@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.light().copyWith(
         //全体で行うことを設定としてはじめに定義
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
