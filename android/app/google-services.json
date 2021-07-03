@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "398996108358",
+    "project_id": "mrstudy-2dfda",
+    "storage_bucket": "mrstudy-2dfda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398996108358:android:c76ba43b2dc78f15384647",
+        "android_client_info": {
+          "package_name": "com.yutakana23.mr_study"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398996108358-8m8f4cph392tmt4nmdc9enqlk3m38h64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Kod1DzTS_KUYgwhZX8GvRm6o2PORrew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398996108358-8m8f4cph392tmt4nmdc9enqlk3m38h64.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "398996108358-bdfnvsgdhg40vb7m24s9m3he2qi1qsbl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yutakana23.mrStudy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
