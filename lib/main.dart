@@ -1,4 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mr_study/screens/registration_screen.dart';
+import 'package:mr_study/screens/login_screen.dart';
 import 'package:mr_study/screens/tabs_screen.dart';
 import 'package:mr_study/screens/welcome_screen.dart';
 
@@ -16,12 +19,12 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-
-      initialRoute: TabsScreen.id,
-
+      initialRoute: LoginScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
         TabsScreen.id: (context) => TabsScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
       },
     );
   }
