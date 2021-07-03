@@ -70,7 +70,7 @@ class ExamsScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white
                       ),
-                      child: Text('おすすめ'),
+                      child: Text('おすすめです'),
                     ),
                   ),
                   Expanded(
