@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'physics_question.dart';
+import '../physics_question.dart';
 import 'package:mr_study/components/graph_chart.dart';
 
 
@@ -10,15 +10,11 @@ class ExamsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-      ),
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Expanded(
-            flex: 1,
+          Container(
             child: Container(
               margin: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
@@ -36,9 +32,7 @@ class ExamsScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                   Text('　<物理>',
-
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
@@ -47,9 +41,9 @@ class ExamsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            flex: 6,
+          Container(
             child: Container(
+              height: MediaQuery.of(context).size.width,
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
                 color: Colors.blue,
@@ -82,8 +76,7 @@ class ExamsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
-            flex: 3,
+          Container(
             child: Container(
               margin: EdgeInsets.all(15.0),
               decoration: BoxDecoration(
@@ -94,8 +87,7 @@ class ExamsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    flex: 1,
+                  Container(
                     child: Container(
                       width: 200.0,
                       margin: EdgeInsets.all(8.0),
@@ -114,8 +106,7 @@ class ExamsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 3,
+                  Container(
                     child: Container(
                       margin: EdgeInsets.all(8.0),
                       width: double.infinity,
