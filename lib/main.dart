@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mr_study/screens/registration_screen.dart';
 import 'package:mr_study/screens/login_screen.dart';
