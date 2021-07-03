@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mr_study/screens/tabs_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
-
   static const String id = 'welcome_screen';
 
   @override
