@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:mr_study/screens/graph_chart.dart';
 import 'package:mr_study/screens/registration_screen.dart';
 import 'package:mr_study/screens/login_screen.dart';
 import 'package:mr_study/screens/tabs_screen.dart';
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         TabsScreen.id: (context) => TabsScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
-        // GraphChart.id: (context) => GraphChart(),
       },
     );
   }
