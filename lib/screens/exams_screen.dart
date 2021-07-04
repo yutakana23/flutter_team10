@@ -50,30 +50,35 @@ class ExamsScreen extends StatelessWidget {
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Container(
-                margin: EdgeInsets.all(15.0),
-                padding: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: GraphChart([
-                  FlSpot(0, 3),
-                  FlSpot(2.6, 2),
-                  FlSpot(4.9, 5),
-                  FlSpot(6.8, 2.5),
-                  FlSpot(8, 4),
-                  FlSpot(9.5, 3),
-                  FlSpot(11, 4),
-                ], [
-                  FlSpot(0, 4),
-                  FlSpot(2.6, 4.3),
-                  FlSpot(4.9, 4.6),
-                  FlSpot(6.8, 5),
-                  FlSpot(8, 6),
-                  FlSpot(9.5, 5.3),
-                  FlSpot(11, 6),
-                ]),
+              child: Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GraphChart([
+                      FlSpot(0, 3),
+                      FlSpot(2.6, 2),
+                      FlSpot(4.9, 5),
+                      FlSpot(6.8, 2.5),
+                      FlSpot(8, 4),
+                      FlSpot(9.5, 3),
+                      FlSpot(11, 4),
+                    ], [
+                      FlSpot(0, 4),
+                      FlSpot(2.6, 4.3),
+                      FlSpot(4.9, 4.6),
+                      FlSpot(6.8, 5),
+                      FlSpot(8, 6),
+                      FlSpot(9.5, 5.3),
+                      FlSpot(11, 6),
+                    ]),
+                  ),
+                  GraphLegend()
+                ],
               ),
             ),
           ),
@@ -173,6 +178,50 @@ class ExamsScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class GraphLegend extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      right: 25.0,
+      bottom: 72.0,
+      child: Container(
+        color: Colors.white,
+        height: 50.0,
+        width: 100.0,
+        // decoration: BoxDecoration(
+        //   border: Border.all(color: Colors.grey),
+        //   borderRadius: BorderRadius.circular(10),
+        // ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.brightness_1,
+                  color: Colors.redAccent,
+                  size: 10.0,
+                ),
+                Text('  あなた'),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.brightness_1,
+                  color: Colors.greenAccent,
+                  size: 10.0,
+                ),
+                Text('  合格者平均'),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
