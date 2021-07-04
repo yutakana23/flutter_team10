@@ -2,29 +2,10 @@ import '../components/advice.dart';
 
 class QuizBrain {
   List<Advice> _adviceList = [
-    Advice(subject: '物理', unit: '力学', advice: 'おしい！')
+    Advice(subject: '物理', unit: '力学', advice: '「力の働く運動」分野の問題が苦手なようです。公式をしっかりと覚えて、活用できるようにしましょう。力学は図を書くことでわかりやすくなります。'),
+    Advice(subject: '物理', unit: '波動', advice: '「光の反射と屈折」の分野が苦手なようです。全反射の条件や屈折率の違う媒質に入った時の光の進路を中心に勉強してください。')
   ];
-
-  String returnAdvice(int point){
-    String advice;
-    if(point == 100){
-      advice = '完璧です！';
-    }else if(point < 100 && point > 60){
-      advice = 'おしい！';
-    }else{
-      advice = 'がんばりましょう！';
-    }
-    return advice;
-  }
-
-
-  void addList(String subject,  int score){ //物理・点数が入力→単元・アドバイスをリストに。
-    String unit = '力学'; //ここどうしよ
-    String advice = returnAdvice(score);
-    _adviceList.add(Advice(subject: subject, unit: unit, advice: advice));
-  }
-
-
+  
   //以下出力関数
   String getSubjectText(int num) {
     return _adviceList[num].subject;
