@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class GraphChart extends StatelessWidget {
 
-  List<FlSpot> lineBarSpots, lineBarSpots2;
+  final List<FlSpot> lineBarSpots, lineBarSpots2;
   GraphChart(this.lineBarSpots, this.lineBarSpots2);
 
   static const String id = 'graph_chart';
