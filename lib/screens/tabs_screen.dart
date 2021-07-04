@@ -3,36 +3,69 @@ import 'package:mr_study/screens/exams_screen.dart';
 import 'package:mr_study/screens/settings_screen.dart';
 import 'package:mr_study/screens/tasks_screen.dart';
 
-class TabsScreen extends StatelessWidget {
+class TabsScreen extends StatefulWidget {
   static const String id = 'tabs_screen';
 
+  @override
+  _TabsScreenState createState() => _TabsScreenState();
+}
+
+class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateMixin {
   final List<TabInfo> _tabs = [
-    TabInfo('tasks', TasksScreen()),
-    TabInfo('exam', ExamsScreen()),
-    TabInfo('settings', SettingsScreen()),
+    TabInfo('タスク', TasksScreen(), Icon(Icons.check_box)),
+    TabInfo('模試結果', ExamsScreen(), Icon(Icons.show_chart)),
+    TabInfo('設定', SettingsScreen(), Icon(Icons.settings)),
   ];
+
+  int _tabIndex = 0;
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController.addListener(() {
+      setState(() {
+        _tabIndex = _tabController.index;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: _tabs.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('title'),
-          bottom: TabBar(
-            tabs: _tabs.map((tab) => Tab(text: tab.label)).toList(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          _tabs[_tabIndex].label,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 22.0,
           ),
         ),
-        body: TabBarView(
-          children: _tabs.map((tab) => tab.widget).toList(),
+        bottom: TabBar(
+          tabs: _tabs.map((tab) => Tab(icon: tab.icon,)).toList(),
+          isScrollable: false,
+          controller: _tabController,
         ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: _tabs.map((tab) => tab.widget).toList(),
       ),
     );
   }
 }
 
 class TabInfo {
-  String label;
-  Widget widget;
-  TabInfo(this.label, this.widget);
+  final String label;
+  final Widget widget;
+  final Icon icon;
+  TabInfo(this.label, this.widget, this.icon);
 }
