@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mr_study/main.dart';
+import 'package:provider/provider.dart';
 
 class Task {
   final String name;
@@ -25,16 +27,12 @@ List<Task> _tasks = [
 ];
 
 class TasksScreen extends StatelessWidget {
-  const TasksScreen({Key? key}) : super(key: key);
 
   static const String id = 'Tasks_Screen';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Task',
-      home: SuggestedTasks(),
-    );
+    return SuggestedTasks();
   }
 }
 
@@ -70,12 +68,16 @@ class SuggestedTasksState extends State<SuggestedTasks> {
           _tasks.where((_tasks) => _tasks.area == root.title).toList();
       print(TasksArea.runtimeType);
       return GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NextPage(TasksArea),
-              ));
+        onTap: () async {
+          Provider.of<ProvidedData>(context, listen: false).hideTabs(TasksArea[0].area);
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NextPage(TasksArea),
+            ),
+          );
+
+          Provider.of<ProvidedData>(context, listen: false).showTabs();
         },
         child: ListTile(
             title: Text(root.title),
