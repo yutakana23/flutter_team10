@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mr_study/main.dart';
 import 'package:mr_study/screens/exams_screen.dart';
 import 'package:mr_study/screens/settings_screen.dart';
 import 'package:mr_study/screens/tasks_screen.dart';
+import 'package:provider/provider.dart';
 
 class TabsScreen extends StatefulWidget {
   static const String id = 'tabs_screen';
@@ -43,17 +45,17 @@ class _TabsScreenState extends State<TabsScreen> with SingleTickerProviderStateM
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          _tabs[_tabIndex].label,
+          Provider.of<ProvidedData>(context).appBarTitle ?? _tabs[_tabIndex].label,
           style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 22.0,
           ),
         ),
-        bottom: TabBar(
+        bottom: Provider.of<ProvidedData>(context).showingTabs ? TabBar(
           tabs: _tabs.map((tab) => Tab(icon: tab.icon,)).toList(),
           isScrollable: false,
           controller: _tabController,
-        ),
+        ) : null,
       ),
       body: TabBarView(
         controller: _tabController,
