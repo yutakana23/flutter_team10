@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mr_study/physics_question.dart';
 import 'package:mr_study/main.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,8 @@ List<Task> _tasks = [
   Task(name: '問1', subject: '数学', area: '数と式'),
   Task(name: '問2', subject: '数学', area: '数と式'),
   Task(name: '問3', subject: '数学', area: '2次関数'),
-
+  Task(name: '問4', subject: '物理', area: '力学'),
+  Task(name: '問5', subject: '物理', area: '力学')
 ];
 
 class TasksScreen extends StatelessWidget {
@@ -64,9 +66,10 @@ class SuggestedTasksState extends State<SuggestedTasks> {
 
   Widget _buildFrame(Entry root) {
     if (root.children.isEmpty) {
-      var TasksArea =
-          _tasks.where((_tasks) => _tasks.area == root.title).toList();
-      print(TasksArea.runtimeType);
+      var TasksArea = _tasks
+          .where(
+              (_tasks) => (_tasks.area == root.title && _tasks.isDone == false))
+          .toList();
       return GestureDetector(
         onTap: () async {
           Provider.of<ProvidedData>(context, listen: false).hideTabs(TasksArea[0].area);
@@ -106,7 +109,7 @@ class SuggestedTasksState extends State<SuggestedTasks> {
           style: TextStyle(
               //fontFamily: ,
               )),
-      trailing: (_tasks.every((_tasks) => _tasks.subject == root.title))
+      trailing: !(_tasks.every((_tasks) => !(_tasks.subject == root.title)))
           ? Icon(
               Icons.brightness_1,
               color: Colors.red,
@@ -128,6 +131,7 @@ class SuggestedTasksState extends State<SuggestedTasks> {
 
 class NextPage extends StatefulWidget {
   NextPage(this.tasks);
+
   final List<Task> tasks;
 
   @override
@@ -136,79 +140,62 @@ class NextPage extends StatefulWidget {
 
 class NextPageState extends State<NextPage> {
   NextPageState(this.tasks);
+
   final List<Task> tasks;
-  bool _flag = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(tasks[0].area),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: ListView.builder(
-            itemCount: tasks.length,
-            padding: const EdgeInsets.all(16.0),
-            itemBuilder: (BuildContext context, int i) {
-              final Task task = tasks[i];
-              return CheckboxListTile(
-                title: Text(task.name),
-                value: task.isDone,
-                onChanged: (bool? value) {
-                  setState(() {
-                    task.isDone = value!;
-                  });
+        appBar: AppBar(
+          title: Text(tasks[0].area),
+        ),
+        body: Container(
+          color: Colors.white,
+          child: Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+            ListView.builder(
+                itemCount: tasks.length,
+                padding: const EdgeInsets.all(16.0),
+                itemBuilder: (BuildContext context, int i) {
+                  final Task task = tasks[i];
+                  return CheckboxListTile(
+                    title: Text(task.name),
+                    value: task.isDone,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        task.isDone = value!;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                    secondary: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return PhysicsQuestion();
+                          }));
+                        },
+                        child: const Text(
+                          'see',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )),
+                  );
+                }),
+            Positioned(
+              bottom: 20.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
                 },
-              );
-            }),
-      ),
-    );
+                child: const Text(
+                  '更新',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            )
+          ]),
+        ));
   }
 }
-
-//   Widget _DisplayTasks(List<Task> tasks) {
-//     return ListView.builder(
-//         shrinkWrap: true,
-//         physics: NeverScrollableScrollPhysics(),
-//         itemCount: tasks.length,
-//         padding: const EdgeInsets.all(16.0),
-//         itemBuilder: (BuildContext context, int i) {
-//           final Task task = tasks[i];
-//           return Dismissible(
-//               key: Key(task.name),
-//               direction: DismissDirection.endToStart,
-//               onDismissed: (DismissDirection dir) {
-//                 setState(() => tasks.removeAt(i));
-//                 ScaffoldMessenger.of(context).showSnackBar(
-//                   SnackBar(
-//                     content: Text('done'),
-//                     action: SnackBarAction(
-//                       label: 'UNDO',
-//                       onPressed: () {
-//                         setState(() => tasks.insert(i, task));
-//                       },
-//                     ),
-//                   ),
-//                 );
-//               },
-//               background: Container(
-//                   color: Colors.green,
-//                   alignment: Alignment.centerRight,
-//                   child: const Icon(Icons.thumb_up)),
-//               child: ListTile(
-//                 title: Text(task.name),
-//                 trailing: ElevatedButton(
-//                   child: Text('button'),
-//                   style: ElevatedButton.styleFrom(
-//                     primary: Colors.blue,
-//                     onPrimary: Colors.white,
-//                   ),
-//                   onPressed: () {
-//                     print('pressed');
-//                   },
-//                 ),
-//               ));
-//         });
-//   }
-// }
