@@ -57,13 +57,17 @@ class PhysicsQuestion extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('問題２',
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('問題２',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
